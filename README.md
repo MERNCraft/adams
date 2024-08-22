@@ -13,3 +13,5 @@ A `@counter-style` is defined with each item a word in a quote from Douglas Adam
 To prevent you from moving directly to the top of the stairs, each step has a rule that hides a mask that covers the step above. Only by moving up the stairs one at a time can you create a `:hover` pseudo-class for each step.
 
 The steps are created from a number of `<div>` elements. It would have been possible to use `::before` and `::after` pseudo-elements to create the rotated shapes that produce a realistic outline for each step, but here `<div>` elements were used for these shapes too.
+
+The quote is adapted from "The Restaurant at the End of the Universe", by Douglas Adams
