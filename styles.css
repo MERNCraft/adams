@@ -1,0 +1,343 @@
+:root {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  --edge:  #fff4;
+  --white: #fff;
+  --light: #ddd;
+  --dark:  #222;
+  --bg:    #030;
+  --clear: #0000;
+
+  --main:  300px;
+  --half:  150px;
+  --stair: 120px;
+  --curl:  100px;
+  --tread:  25px;
+  --pad:     8px;
+  --step:    6px;
+  --line:    1px;
+
+  /* Shadows for the steps */
+  --shadow: var(--line) 10px 2px #0003;
+  --text: 1px 1px 1px #fff9, 0px 0px 2px #0009;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  color: var(--light);
+  background-color: var(--dark);
+}
+
+main {
+  position: relative;
+  width: var(--main);
+  height: var(--half);
+  border: var(--line) solid #fff;
+  border-radius: var(--pad);
+  box-sizing: border-box;
+  background-color: var(--bg);
+  overflow: hidden;
+}
+
+p {
+  position: absolute;
+  left: 0;
+  top: var(--pad);
+  width: var(--half);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1rem;
+  background-color: var(--bg);
+
+  span {
+    display: block
+  }
+}
+
+div {
+  position: relative;
+  font-size: var(--tread);
+  width: var(--stair);
+}
+
+div.stair {
+  border-bottom: var(--step) solid #999;
+  box-shadow: var(--shadow);
+  left: var(--step);
+  background-color: var(--light);
+}
+
+/* Text on the stairs */
+div::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  font-size: 1rem;
+  /* Just show the shadow of the text as if indented */
+  color: transparent;
+  text-shadow: var(--text);
+}
+
+/* Place each step relative to the one below, reaching
+ * to the top
+ */
+div.step-1 {
+  left: var(--half);
+  height: 6em;
+  line-height: 11em;
+
+  &.stair:hover::after {
+    counter-set: one 1;
+    content: counter(one, adams)
+  }
+}
+
+div.step-2 {
+  height: 5em;
+  line-height: 9em;
+
+  &.stair:hover::after {
+    counter-set: two 2;
+    content: counter(two, adams)
+  }
+}
+
+div.step-3 {
+  height: 4em;
+  line-height: 7em;
+
+  &.stair:hover::after {
+    counter-set: three 3;
+    content: counter(three, adams)
+  }
+}
+
+div.step-4 {
+  height: 3em;
+  line-height: 5em;
+
+  &.stair:hover::after {
+    counter-set: four 4;
+    content: counter(four, adams)
+  }
+}
+
+div.step-5 {
+  height: 2em;
+  line-height: 3em;
+
+  &.stair:hover::after {
+    counter-set: five 5;
+    content: counter(five, adams)
+  }
+}
+
+div.step-6 {
+  height: 1em;
+  line-height: 1em;
+
+  &.stair:hover{
+    &::after {
+      counter-set: six 6;
+      content: counter(six, adams)
+    }
+
+    div { 
+      &,
+      &:hover {
+        z-index: 1;
+      }
+    }
+  }
+}
+
+
+/* Create a shadow for each step, with custom positions */
+div.rise {
+  position: absolute;
+  rotate: 45deg;
+  background-color: var(--bg);
+  width: var(--pad);
+  height: var(--pad);
+}
+
+div.rise.left {
+  background-color: var(--light);
+  border-bottom-left-radius: var(--pad);
+}
+
+.rise.step-2 {
+  &.left {
+    top: 121px;
+    left: 152px;
+  } 
+  &.right {
+    top: 126px;
+    left: 272px;
+  }
+}
+
+.rise.step-3 {
+  &.left {
+    top: 96px;
+    left: 158px;
+  }
+  &.right {
+    top: 101px;
+    left: 278px;
+  }
+}
+
+.rise.step-4 {
+  &.left {
+    top: 71px;
+    left: 164px;
+  }
+  &.right {
+    top: 76px;
+    left: 284px;
+  }
+}
+
+.rise.step-5 {
+  &.left {
+    top: 46px;
+    left: 170px;
+  } 
+  &.right {
+    top: 51px;
+    left: 290px;
+  }
+}
+
+.rise.step-6 {
+  &.left {
+    top: 21px;
+    left: 176px;
+  } 
+  &.right {
+    top: 26px;
+    left: 296px;
+  }
+}
+
+/* Suggest the rise of each stem */
+div.edge {
+  position: absolute;
+  background-color: var(--edge);
+  width: var(--line);
+  height: var(--tread);
+}
+
+.edge.step-1 {
+  top: 125px;
+  left: 156px;
+}
+
+.edge.step-2 {
+  top: 100px;
+  left: 162px;
+}
+
+.edge.step-3 {
+  top: 75px;
+  left: 168px;
+}
+
+.edge.step-4 {
+  top: 50px;
+  left: 174px;
+}
+
+.edge.step-5 {
+  top: 25px;
+  left: 180px;
+}
+
+.edge.step-6 {
+  top: 0;
+  left: 185px;
+}
+
+/* Place invisible masks over each step to block :hover */
+div.mask {
+  position: absolute;
+  background-color: var(--clear);
+  top: 0;
+  left: var(--half);
+  width: var(--half);
+}
+
+/* Remove the masks one step at a time */
+div.stair.step-1:hover ~ div.mask.step-2,
+div.stair:has(.step-2:hover) ~ div.mask.step-3,
+div.stair:has(.step-3:hover) ~ div.mask.step-4,
+div.stair:has(.step-4:hover) ~ div.mask.step-5,
+div.stair:has(.step-5:hover) ~ div.mask.step-6 {
+  display: none;
+} 
+
+div.enlightenment {
+  position: absolute;
+  top: 0;
+  left: -180px;
+  width: var(--main);
+  height: var(--half);
+  z-index: -1;
+  background-color: var(--clear);
+  border-bottom-right-radius: var(--curl);
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+/* "You're never alone with a rubber duck."
+ *
+ * Captain of the Golgafrinchan B Ark,
+ * The Restaurant at the End of the Universe
+ * Douglas Adams
+ */
+@counter-style adams {
+  system: alphabetic;
+  symbols: "you" "are" "never" "alone" "with" "a rubber duck";
+  suffix: "";
+}
+
+/* Show the GitHub logo */
+a.github {
+  width: 0;
+  height: 0;
+
+  img {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    width: 32px;
+    height: 32px;
+    filter: grayscale(1);
+    opacity: 0.25;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
