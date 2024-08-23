@@ -17,7 +17,6 @@
   --main:  300px;
   --half:  150px;
   --stair: 120px;
-  --curl:  100px;
   --tread:  25px;
   --pad:     8px;
   --step:    6px;
@@ -299,8 +298,6 @@ div.enlightenment {
   width: var(--main);
   height: var(--half);
   z-index: -1;
-  background-color: var(--clear);
-  border-bottom-right-radius: var(--curl);
 
   img {
     position: absolute;
@@ -322,6 +319,7 @@ div.enlightenment {
   suffix: "";
 }
 
+
 /* Show the GitHub logo */
 a.github {
   width: 0;
@@ -329,6 +327,7 @@ a.github {
 
   img {
     position: absolute;
+    z-index: 1;
     right: 2px;
     bottom: 2px;
     width: 32px;
